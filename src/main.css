@@ -1,4 +1,7 @@
-
 body {
-    background-color: rgba(192, 137, 250, 0.607)
+    background-color: #55c3ebcf
+}
+
+.bg-custom {
+    background-color: #c02ff169;
 }
