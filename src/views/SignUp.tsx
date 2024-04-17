@@ -47,16 +47,16 @@ export default function SignUp({}: Props) {
                 <Card.Body>
                     <Form onSubmit={handleFormSubmit}>
                     <Form.Label htmlFor='firstName'>First Name</Form.Label>
-                        <Form.Control id='firstName' name='firstName' placeholder='Enter First Name' value={userFormData.firstName} onChange={handleInputChange} />
+                        <Form.Control id='firstName' name='firstName' placeholder='Enter First Name' value={userFormData.firstName} onChange={handleInputChange}/>
 
                         <Form.Label htmlFor='lastName'>Last Name</Form.Label>
-                        <Form.Control id='lastName' name='lastName' placeholder='Enter Last Name' value={userFormData.lastName} onChange={handleInputChange} />
+                        <Form.Control id='lastName' name='lastName' placeholder='Enter Last Name' value={userFormData.lastName} onChange={handleInputChange}/>
 
                         <Form.Label htmlFor='email'>Email</Form.Label>
-                        <Form.Control id='email' name='email' type='email' placeholder='Enter Email' value={userFormData.email} onChange={handleInputChange} />
+                        <Form.Control id='email' name='email' type='email' placeholder='Enter Email' value={userFormData.email} onChange={handleInputChange}/>
 
                         <Form.Label htmlFor='username'>Username</Form.Label>
-                        <Form.Control id='username' name='username' placeholder='Enter Username' value={userFormData.username} onChange={handleInputChange} />
+                        <Form.Control id='username' name='username' placeholder='Enter Username' value={userFormData.username} onChange={handleInputChange}/>
 
                         <Form.Label htmlFor='password'>Password</Form.Label>
                         <InputGroup>
