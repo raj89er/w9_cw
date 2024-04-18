@@ -16,7 +16,7 @@ export default function Navigation({ isLoggedIn }: NavigationProps){
     return (
         <Navbar expand='lg' data-bs-theme={backgroundTheme} bg={backgroundTheme}>
             <Container fluid>
-                <Navbar.Brand as={Link} to='/'>The Holocron Journals</Navbar.Brand>
+                <Navbar.Brand as={Link} to='/'>The Holocron Cronicles</Navbar.Brand>
                 <Navbar.Toggle aria-controls='nav-collapse' />
                 <Navbar.Collapse id='nav-collapse'>
                     <Nav className='me-auto'>

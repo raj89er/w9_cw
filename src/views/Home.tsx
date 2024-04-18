@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import PostCard from '../components/PostCard';
 import PostForm from '../components/PostForm';
 import { PostFormDataType, PostType } from '../types';
+import { getAllPosts } from '../lib/apiWrapper';
 
 
 type Sorting = {
@@ -24,78 +25,20 @@ type HomeProps = {
 export default function Home({isLoggedIn, handleClick}: HomeProps) {
 
     const [showForm, setShowForm] = useState(false);
-    const [posts, setPosts] = useState<PostType[]>([
-        {
-            author: {
-                dateCreated: "Wed, 17 Apr 2024 12:00:00 GMT",
-                email: "okenobi@jediorder.com",
-                firstName: "Obi-Wan",
-                id: 2,
-                lastName: "Kenobi",
-                username: "okenobi",
-            },
-            body: "Completed my Python script to manage my Jedi tasks. My padawan will no longer get away with their jedi tasks anymore!",
-            dateCreated: "Wed, 17 Apr 2024 12:05:00 GMT",
-            id: 3,
-            title: "Jedi To-Do App",
-        },
-        {
-            author: {
-                dateCreated: "Thu, 18 Apr 2024 10:00:00 GMT",
-                email: "atano@jediorder.com",
-                firstName: "Ahsoka",
-                id: 3,
-                lastName: "Tano",
-                username: "atano",
-            },
-            body: "Just launched my blog on the latest adventures in the galaxy using Vite and TypeScript. Stay tuned for more Jedi wisdom!",
-            dateCreated: "Thu, 18 Apr 2024 10:15:00 GMT",
-            id: 4,
-            title: "Galactic Blog",
-        },
-        {
-            author: {
-                dateCreated: "Fri, 19 Apr 2024 08:00:00 GMT",
-                email: "ebridger@rebels.com",
-                firstName: "Ezra",
-                id: 4,
-                lastName: "Bridger",
-                username: "ebridger",
-            },
-            body: "Just built a shopping cart for collecting rare artifacts from across the galaxy!",
-            dateCreated: "Fri, 19 Apr 2024 08:30:00 GMT",
-            id: 5,
-            title: "Galactic Shopping Cart",
-        },
-        {
-            author: {
-                dateCreated: "Sat, 20 Apr 2024 09:00:00 GMT",
-                email: "okenobi@jediorder.com",
-                firstName: "Obi-Wan",
-                id: 2,
-                lastName: "Kenobi",
-                username: "okenobi",
-            },
-            body: "Working on a secret project to decode ancient Sith scripts using TypeScript. May the Force guide my code!",
-            dateCreated: "Sat, 20 Apr 2024 09:15:00 GMT",
-            id: 6,
-            title: "Sith Script Decryption",
-        },
-        {
-            author: {
-                dateCreated: "Sun, 22 Apr 2024 11:00:00 GMT",
-                email: "bbaggins@shire.com",
-                firstName: "Bilbo",
-                id: 5,
-                lastName: "Baggins",
-                username: "bbaggins",
-            },
-            body: "Just finished writing a Python script to help me manage my magical inventory in the Shire. Hobbit coding at its finest!",
-            dateCreated: "Sun, 22 Apr 2024 11:30:00 GMT",
-            id: 7,
-            title: "Hobbit Inventory Manager",
-        },
-    ]);
+    const [posts, setPosts] = useState<PostType[]>([])
+
+    useEffect(() => {
+        console.log('Hello World')
+        async function fetchData(){
+            const response = await getAllPosts();
+            if (response.data){
+                let posts = response.data;
+                setPosts(posts)
+            }
+        }
+
+        fetchData();
+    }, [])
 
     const [searchTerm, setSearchTerm] = useState('');
 
