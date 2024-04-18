@@ -16,7 +16,7 @@ export default function Navigation({ isLoggedIn }: NavigationProps){
     return (
         <Navbar expand='lg' data-bs-theme={backgroundTheme} bg={backgroundTheme}>
             <Container fluid>
-                <Navbar.Brand as={Link} to='/'>The Holocron Cronicles</Navbar.Brand>
+                <Navbar.Brand as={Link} to='/'>Kekambas Blog</Navbar.Brand>
                 <Navbar.Toggle aria-controls='nav-collapse' />
                 <Navbar.Collapse id='nav-collapse'>
                     <Nav className='me-auto'>
@@ -28,12 +28,12 @@ export default function Navigation({ isLoggedIn }: NavigationProps){
                         ) : (
                             <>
                                 <Nav.Link as={Link} to='/signup'>Sign Up</Nav.Link>
-                                <Nav.Link href='/'>Log In</Nav.Link>
+                                <Nav.Link as={Link} to='/login'>Log In</Nav.Link>
                             </>
                         )}
                     </Nav>
                     <Nav>
-                        <Button onClick={() => setBackgroundTheme(backgroundTheme === 'dark' ? 'light' : 'dark')}>D/L Toggle</Button>
+                        <Button onClick={() => setBackgroundTheme(backgroundTheme === 'dark' ? 'light' : 'dark')}>Change Background</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
