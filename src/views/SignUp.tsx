@@ -13,7 +13,6 @@ type SignUpProps = {
 }
 
 export default function SignUp({ flashMessage }: SignUpProps) {
-
     const navigate = useNavigate();
 
     const [userFormData, setUserFormData] = useState<UserFormDataType>(
@@ -46,13 +45,8 @@ export default function SignUp({ flashMessage }: SignUpProps) {
         }
     }
 
-    const disableSubmit = (
-        userFormData.password.length < 8 ||
-        !/[A-Z]/.test(userFormData.password) ||
-        !/[a-z]/.test(userFormData.password) ||
-        !/[0-9]/.test(userFormData.password) ||
-        !/[!@#$%^&*()_+{}|:"<>?]/.test(userFormData.password)
-    );
+    // const disableSubmit = userFormData.password.length < 5 || userFormData.password !== userFormData.confirmPassword
+    const disableSubmit = !/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[-\#\$\.\%\&\*\!\?])(?=.*[a-zA-Z]).{8,16}$/.test(userFormData.password) || userFormData.password !== userFormData.confirmPassword
 
     return (
         <>
